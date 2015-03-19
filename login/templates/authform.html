@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block login %}
+<form action="/auth/login/" method="post">
+	{% csrf_token %}
+	{% if form.errors %}
+	<div>
+		<p>Неверное имя пользователя или пароль</p>
+	</div>
+	{% endif %}
+	<div>
+		<p>Имя: </p>
+		<input type="text" name="username" id="username">
+	</div>
+	<div>
+		<p>Пароль: </p>
+		<input type="password" name="password" id="password">
+	</div>
+	<div class="hor_align">
+		<input type="submit" value="Submit">
+	</div>
+	<div class="hor_align"><a href="/auth/registration/">Регистрация</a></div>
+</form>
+{{args}}
+{% endblock %}

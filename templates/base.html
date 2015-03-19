@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+	<title>Igor Idzikovsky test task</title>
+</head>
+<body>
+<section class="page">
+	<nav class="left_nav">
+		<div class="button">
+			<a href="/">Главная</a>
+		</div>
+		<div class="button">
+			<a href="/">Контакты</a>
+		</div>
+		{% if user.is_authenticated %}
+		<div class="button">
+			<a href="/auth/personal/{{user.id}}/">Личный кабинет</a>
+		</div>
+		<div class="button">
+			<a href="/auth/logout/">Выйти</a>
+		</div>
+		{% else %}
+		<div class="button">
+			<a href="/auth/login/">Войти</a>
+		</div>
+		{% endif %}
+	</nav>
+	<section class="center_container">
+		<section class="topline">
+			<h1>Тестовое задание</h1>
+		</section>
+		<section>
+			{% block my_cv %}{% endblock %}
+			{% block login %}{% endblock %}
+			{% block register %}{% endblock %}
+		</section>
+	</section>
+	{% if user.login %}
+	<section  class="right_nav">
+		<nav>
+			{% if user.avatar %}
+			<img src='{{user.avatar.url}}' height="207" width="90" alt="Моя фотография">
+			{% else %}
+			<img class="center_img" src='{% static 'no_avatar.png' %}' width='120' alt="Моя фотография">
+			{% endif %}
+			<p align="center">{{user.get_short_name}}</p>
+		</nav>
+	</section>
+	{% endif %}
+</section>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block login %}
+<div style="display: block">
+<form accept="/auth/registration/" method="post">
+{% csrf_token %}
+<p>{{ form.last_name.label }}:</p>
+<p>{{ form.errors.last_name }}</p>
+<p>{{ form.last_name }}</p>
+
+<p>{{ form.first_name.label }}:</p>
+<p>{{ form.errors.first_name }}</p>
+<p>{{ form.first_name }}</p>
+
+<p>{{ form.login.label }}:</p>
+<p>{{ form.errors.login }}</p>
+<p>{{ form.login }}</p>
+
+<p>{{ form.password.label }}:{{form.password.help_text}}</p>
+<p>{{form.non_field_errors}}</p>
+<p>{{ form.errors.password }}</p>
+<p>{{ form.password }}</p>
+
+<p>{{ form.conf_password.label }}:</p>
+<p>{{ form.errors.conf_password }}</p>
+<p>{{ form.conf_password }}</p>
+
+<p>{{ form.email.label }}:{{form.email.help_text}}</p>
+<p>{{ form.errors.email }}</p>
+<p>{{ form.email }}</p>
+
+<p>{{ form.dob.label }}:{{form.dob.help_text}}</p>
+<p>{{ form.errors.dob }}</p>
+<p>{{ form.dob }}</p>
+
+<p>{{ form.mobile.label }}:{{form.mobile.help_text}}</p>
+<p>{{ form.errors.mobile }}</p>
+<p>{{ form.mobile }}</p>
+
+<p>{{ form.captcha.label }}:</p>
+<p>{{ form.errors.captcha }}</p>
+<p>{{ form.captcha }}</p>
+
+<!-- {% for item in form %}
+	<p>{{ item.label }}: {{item.help_text}}</p>
+	<p>{{ item }}</p>
+{% endfor %} -->
+<input type="submit" value="Зарегистрировать">
+</form>
+</div>
+{{form.errors}}
+<!-- {{form}} -->
+{% endblock %}

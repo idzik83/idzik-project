@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+
+{% block login %}
+{% csrf_token %}
+{{args}}
+{% endblock %}
